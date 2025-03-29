@@ -25,9 +25,7 @@
 
 <h3>1. Photometric Observation Analysis Module</h3>
 <p>This module processes measurement files reduced with AstroImageJ (AIJ). Users must upload the measurement file (.csv/.xls) and may optionally provide a file containing predicted minima. The light curve is visualized with overlays showing the signal-to-noise ratio (SNR), source/background counts, and exposure time for each observation. A dedicated diagnostics section helps identify ideal exposure and count values.</p>
-<p>If a minima file is provided, it must follow the format:</p>
-<pre>2460758.266568452585489    1    0.000008184855781</pre>
-<p>Columns: Minimum Time [BJD], Minimum Type (1 = Primary, 2 = Secondary), and Uncertainty [days]. The software currently visualizes minimum times based on EEST (Eastern European Summer Time), with conversion applied to match local time. Future updates will include configurable time zones.</p>
+The software currently visualizes minimum times based on EEST (Eastern European Summer Time), with conversion applied to match local time. Future updates will include configurable time zones.</p>
 <p>Additionally, the module calculates the angular separation between the target and the Moon at the beginning and end of the observation, providing further insights for planning and evaluation.</p>
 
 <h3>2. TESS Analysis Module</h3>
@@ -37,11 +35,6 @@
 <h3>3. Astronomical Observation Planning Module</h3>
 <p>This module calculates the observability of target stars for a given date and observatory location. Observers can manually input ephemeris data or load from a formatted file. Ephemeris files are dynamically parsed and searchable by star name. For each target, the tool uses the reference minimum and period to compute the times of primary and secondary minima on the selected date.</p>
 <p>The module dynamically generates altitude-time plots, taking twilight times into account. The azimuth position of the target is visualized using a color bar, aiding in the interpretation of sky position and angular separation from the Moon. Observatory locations can be manually saved and reused across sessions. The graph also includes the exact timing of predicted minima, shown in hour format for observation planning.</p>
-
-<h2>Time and Units</h2>
-<p><strong>Photometric Observation Analysis (Module 1):</strong> Observation times, plots, and minima calculations in the Photometric Observation Analysis module are displayed in EEST (Eastern European Summer Time) by default. Future releases may offer user-configurable time zones or a direct use of UTC.
-</p>
-<p><strong>Astronomical Observation Planning (Module 3):</strong> For the AstPlan module, the time zone is determined by the user-selected observatory location. By entering latitude, longitude, altitude, and local time offset, observers can generate altitude-time graphs that accurately reflect their local conditions, twilight intervals, and minima times specific to that location.</p>
 
 <h2>Input Requirements</h2>
 <ul>
