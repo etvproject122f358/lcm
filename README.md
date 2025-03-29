@@ -28,6 +28,7 @@
 The software currently visualizes minimum times based on EEST (Eastern European Summer Time), with conversion applied to match local time. Future updates will include configurable time zones.</p>
 <p>Additionally, the module calculates the angular separation between the target and the Moon at the beginning and end of the observation, providing further insights for planning and evaluation.</p>
 
+
 <h3>2. TESS Analysis Module</h3>
 <p>This module queries whether a target has been observed by the TESS space telescope and retrieves data across available sectors. The user is presented with a categorized list of observations based on cadence: 20s and 120s short/long cadence data, as well as Full Frame Images (FFIs) with exposures of 158.4s, 475.2s, and 1425.6s. Quality flags can be applied to filter the data. Users may visualize light curves, identify and remove outliers (using manual and automatic techniques), and apply polynomial detrending up to the 4th degree.</p>
 <p>The phase folding section enables both manual entry of reference time and period, as well as automatic detection using techniques such as Lomb-Scargle periodograms, Gaussian Mixture Models, Fourier analysis, and cubic spline interpolation. Resulting light curves include visual indicators for the phase 0 minima and the automatically detected parameters.</p>
