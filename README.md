@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>lcm - Photometric Observation and Data Analysis Tool</title>
 </head>
 <body>
 
