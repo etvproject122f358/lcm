@@ -11,8 +11,6 @@
   <strong>lcm</strong> is a scientific software developed to interpret photometric light curves,
   integrate TESS data analysis, and facilitate efficient observation planning. Built with Python,
   it provides a user-friendly interface for both ground-based and space-based photometric data.
-  The software also includes a built-in interface for quickly querying <em>SIMBAD</em> to retrieve
-  target star information.
 </p>
 
 <hr>
