@@ -7,124 +7,54 @@
 
 <h1>lcm: Photometric Observation and Data Analysis Tool</h1>
 
-<p>
-  <strong>lcm</strong> is a scientific software developed to interpret photometric light curves,
-  integrate TESS data analysis, and facilitate efficient observation planning. Built with Python,
-  it provides a user-friendly interface for both ground-based and space-based photometric data.
-</p>
+<p><strong>lcm</strong> is a scientific software developed for the visualization and interpretation of photometric light curves, integrating multiple observational analysis tools into a user-friendly structure. The program includes modules for TESS space telescope data analysis, ground-based observation assessment using AstroImageJ (AIJ) outputs, and an astronomical observation planning system based on ephemeris data. It is designed to assist both in analyzing existing data and planning future observations. The software also includes a built-in interface for quickly querying SIMBAD to retrieve target star information.</p>
 
-<hr>
-
-<h2>1. Photometric Observation Analysis</h2>
-<p>
-  <strong>lcm</strong> processes measurement files reduced using <strong>AstroImageJ (AIJ)</strong> and visualizes them
-  as light curves. For each observation, it displays:
-</p>
+<h2>Main Features</h2>
 <ul>
-  <li><strong>SNR (signal-to-noise ratio)</strong>, source counts, and background counts</li>
-  <li>Exposure time and basic observational details (e.g., date, filter, telescope)</li>
-  <li>The angular distance to the Moon at the start/end of the observation</li>
+  <li>Visualization of photometric light curves from TESS and ground-based telescopes</li>
+  <li>Automatic identification and marking of primary and secondary minima on light curves</li>
+  <li>Calculation of signal-to-noise ratios (SNR), source and background counts, and exposure diagnostics</li>
+  <li>Outlier detection and removal using statistical methods (Sigma Clipping, Boxplot, Chauvenet's criterion)</li>
+  <li>Normalization and detrending of light curves using polynomial fits</li>
+  <li>Manual and automated phase folding using Gaussian Mixture Models, Fourier analysis, cubic spline interpolation, and Lomb-Scargle periodogram</li>
+  <li>Observation planning with altitude-time plots and Moon angular separation visualizations</li>
+  <li>Quick access to SIMBAD for star name resolution and basic astrophysical data</li>
 </ul>
-<p>
-  To help observers understand ideal observational conditions, the software generates a 
-  horizon altitude-time graph that accounts for twilight intervals (astronomical, nautical, 
-  and civil). Because expressing the target-Moon distance only by altitude is essentially 
-  one-dimensional, <strong>lcm</strong> visualizes the target’s azimuth with a color scale, providing
-  a clearer view of the star’s position relative to the Moon.
-</p>
-<p>
-  If a minima file is provided, previously calculated minimum times are overlaid on the 
-  light curve, enabling a visual check of when these minima occur. This also helps validate 
-  ephemeris accuracy. Minimum times are currently plotted in <strong>EEST</strong> (Eastern European 
-  Summer Time); future versions may allow configurable time zones. The minimum time format:
-</p>
-<pre>2460758.266568452585489   1   0.000008184855781</pre>
-<p>
-  Here, columns represent BJD (minimum time), type (1=primary, 2=secondary), and uncertainty 
-  (days). The software further computes the error in seconds to guide the observer.
-</p>
 
-<hr>
+<h2>Modules</h2>
 
-<h2>2. SIMBAD Integration</h2>
-<p>
-  <strong>lcm</strong> provides a direct link to the <strong>SIMBAD</strong> database, allowing users
-  to quickly access detailed information about the target star. This ensures seamless
-  integration of archival data (e.g., spectral type, magnitudes, coordinates) without
-  leaving the <strong>lcm</strong> interface.
+<h3>1. Photometric Observation Analysis Module</h3>
+<p>This module processes measurement files reduced with AstroImageJ (AIJ). Users must upload the measurement file (.csv/.xls) and may optionally provide a file containing predicted minima. The light curve is visualized with overlays showing the signal-to-noise ratio (SNR), source/background counts, and exposure time for each observation. A dedicated diagnostics section helps identify ideal exposure and count values.</p>
+<p>If a minima file is provided, it must follow the format:</p>
+<pre>2460758.266568452585489    1    0.000008184855781</pre>
+<p>Columns: Minimum Time [BJD], Minimum Type (1 = Primary, 2 = Secondary), and Uncertainty [days]. The software currently visualizes minimum times based on EEST (Eastern European Summer Time), with conversion applied to match local time. Future updates will include configurable time zones.</p>
+<p>Additionally, the module calculates the angular separation between the target and the Moon at the beginning and end of the observation, providing further insights for planning and evaluation.</p>
+
+<h3>2. TESS Analysis Module</h3>
+<p>This module queries whether a target has been observed by the TESS space telescope and retrieves data across available sectors. The user is presented with a categorized list of observations based on cadence: 20s and 120s short/long cadence data, as well as Full Frame Images (FFIs) with exposures of 158.4s, 475.2s, and 1425.6s. Quality flags can be applied to filter the data. Users may visualize light curves, identify and remove outliers (using manual and automatic techniques), and apply polynomial detrending up to the 4th degree.</p>
+<p>The phase folding section enables both manual entry of reference time and period, as well as automatic detection using techniques such as Lomb-Scargle periodograms, Gaussian Mixture Models, Fourier analysis, and cubic spline interpolation. Resulting light curves include visual indicators for the phase 0 minima and the automatically detected parameters.</p>
+
+<h3>3. Astronomical Observation Planning Module</h3>
+<p>This module calculates the observability of target stars for a given date and observatory location. Observers can manually input ephemeris data or load from a formatted file. Ephemeris files are dynamically parsed and searchable by star name. For each target, the tool uses the reference minimum and period to compute the times of primary and secondary minima on the selected date.</p>
+<p>The module dynamically generates altitude-time plots, taking twilight times into account. The azimuth position of the target is visualized using a color bar, aiding in the interpretation of sky position and angular separation from the Moon. Observatory locations can be manually saved and reused across sessions. The graph also includes the exact timing of predicted minima, shown in hour format for observation planning.</p>
+
+<h2>Time and Units</h2>
+<p><strong>Photometric Observation Analysis (Module 1):</strong> Observation times, plots, and minima calculations in the Photometric Observation Analysis module are displayed in EEST (Eastern European Summer Time) by default. Future releases may offer user-configurable time zones or a direct use of UTC.
 </p>
-
-<hr>
-
-<h2>3. TESS Analysis Module</h2>
-<p>
-  This module focuses on analyzing <strong>TESS space telescope</strong> data. It checks whether
-  the target star has been observed by TESS, listing the relevant sectors in which it appears.
-  Data products are categorized by cadence (<em>20s, 120s</em>) and Full Frame Images (FFIs) 
-  with exposure times of <em>158.4s, 475.2s, and 1425.6s</em>. Users can:
-</p>
-<ul>
-  <li><strong>Query</strong> TESS observations for a target</li>
-  <li>Filter and visualize light curves based on <em>quality flags</em> and <em>NaN</em> values</li>
-  <li>Remove outliers <em>manually</em> or using <em>Sigma Clipping</em>, <em>Boxplot analysis</em>, or <em>Chauvenet’s criterion</em></li>
-  <li>Apply <strong>detrending</strong> up to 4th-degree polynomial fits</li>
-  <li><strong>Phase Fold</strong> the light curves manually or using automatic methods 
-      (Gaussian Mixture Models, cubic spline, Fourier analysis, Lomb-Scargle periodograms)</li>
-</ul>
-<p>
-  At each step, data can be saved in <code>csv</code>, <code>txt</code>, or <code>xlsx</code> format for
-  further analysis. 
-</p>
-
-<hr>
-
-<h2>4. Observation Planning Module (AstPlan)</h2>
-<p>
-  This module helps users determine target visibility (altitude) and primary/secondary
-  eclipse events for a specified date and observatory location. Observers can manually
-  enter or load ephemeris data (with star names, reference minima, and orbital periods).
-  Once a location is selected (from a saved list or via manual coordinates), a dynamic 
-  altitude-time graph is generated, including twilight intervals. The target’s azimuth 
-  is shown using a color scale, clarifying its position relative to the Moon. 
-</p>
-<p>
-  If the user provides reference minima (T<sub>0</sub>) and a period (P), the software calculates
-  the times of any minima crossing on that date, marking them on the graph in hour format 
-  (currently EEST). These can help observers pinpoint the best observing window for 
-  precise eclipse timing.
-</p>
-
-<hr>
-
-<h2>Time Reference</h2>
-<p>
-  All observation times, plots, and minima calculations are displayed in <strong>EEST</strong>. 
-  Future releases may offer localization to different time zones or direct use of UTC.
-</p>
-
-<hr>
+<p><strong>Astronomical Observation Planning (Module 3):</strong> For the AstPlan module, the time zone is determined by the user-selected observatory location. By entering latitude, longitude, altitude, and local time offset, observers can generate altitude-time graphs that accurately reflect their local conditions, twilight intervals, and minima times specific to that location.</p>
 
 <h2>Input Requirements</h2>
 <ul>
-  <li><strong>AIJ Measurement File</strong>: <code>.csv</code> or <code>.xls</code> exported from AstroImageJ, containing
-    time and flux columns.</li>
-  <li><strong>Minima File (optional)</strong>: A text file listing minima times in the format:
-    <pre>2459223.1234   1   0.000010</pre>
-    The columns represent <em>minimum time [BJD]</em>, <em>minima type (1 or 2)</em>, 
-    and <em>error in days</em>.</li>
-  <li><strong>Ephemeris File</strong>: A file detailing star names, reference minimum times, 
-    and periods. This can be entered manually or loaded from disk.</li>
-  <li><strong>Observatory Location</strong>: Coordinates can be entered manually or selected 
-    from predefined templates. Additional locations can be saved for future reuse.</li>
+  <li><strong>AIJ Measurement File:</strong> A .csv or .xls file exported from AstroImageJ, containing columns for time and flux.</li>
+  <li><strong>Minima File (optional):</strong> A .txt file with each line containing:
+    <pre>Minimum Time [BJD]    Min Type (1/2)    Uncertainty [days]</pre>
+  </li>
+  <li><strong>Ephemeris File:</strong> A list of target names with associated reference minima and orbital periods. The ephemeris information can either be entered manually or loaded from a file.</li>
+  <li><strong>Observatory Location:</strong> Coordinates can be entered manually or selected from pre-defined templates.</li>
 </ul>
 
-<hr>
-
 <h2>License</h2>
-<p>
-  <strong>lcm</strong> is released under the <strong>Apache License 2.0</strong>. Refer to the <code>LICENSE</code> 
-  file for details on usage and redistribution.
-</p>
+<p>This software is released under the <strong>Apache License 2.0</strong>. Please refer to the LICENSE file for detailed terms of use.</p>
 
 </body>
 </html>
