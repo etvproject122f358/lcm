@@ -7,7 +7,7 @@
 
 <h1>lcm: Photometric Observation and Data Analysis Tool</h1>
 
-<p><strong>lcm</strong> is a scientific software developed for the visualization and interpretation of photometric light curves, integrating multiple observational analysis tools into a user-friendly structure. The program includes modules for TESS space telescope data analysis, ground-based observation assessment using AstroImageJ (AIJ) outputs, and an astronomical observation planning system based on ephemeris data. It is designed to assist both in analyzing existing data and planning future observations. The software also includes a built-in interface for quickly querying SIMBAD to retrieve target star information.</p>
+<p><strong>lcm</strong> is a scientific software developed for the visualization and interpretation of photometric light curves, integrating multiple observational analysis tools into a user-friendly structure. The program includes modules for TESS space telescope data analysis, ground-based observation assessment using AstroImageJ (AIJ) outputs, and an astronomical observation planning system based on ephemeris data. It is designed to assist both in analyzing existing data and planning future observations.</p>
 
 <h2>Main Features</h2>
 <ul>
