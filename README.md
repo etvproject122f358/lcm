@@ -39,12 +39,14 @@ The software currently visualizes minimum times based on EEST (Eastern European 
 
 <h2>Input Requirements</h2>
 <ul>
-  <li><strong>AIJ Measurement File:</strong> A .csv or .xls file exported from AstroImageJ, containing columns for time and flux.</li>
+  <li><strong>AIJ Measurement File:</strong> lcm expects measurement file exported from AstroImageJ.</li>
   <li><strong>Minima File (optional):</strong> A .txt file with each line containing:
     <pre>Minimum Time [BJD]    Min Type (1/2)    Uncertainty [days]</pre>
   </li>
   <li><strong>Ephemeris File:</strong> A list of target names with associated reference minima and orbital periods. The ephemeris information can either be entered manually or loaded from a file.</li>
   <li><strong>Observatory Location:</strong> Coordinates can be entered manually or selected from pre-defined templates.</li>
+<li><strong>.dat File:</strong> Each <code>.dat</code> file must contain BJD, relative flux, and relative flux error in that exact order, followed by a corresponding measurement table (if applicable) that details the observation parameters (e.g., exposure time, star counts, background counts). Additionally, its filename must follow the format <code>YYYYMMDD_StarName_Telescope_Filter_LC</code>. For example, <code>20240101_DD-CrB_T100_u_LC.dat</code>. If a minima file is provided for the same dataset, its name should be identical but end with <code>_minima</code>, e.g., <code>20240101_DD-CrB_T100_u_LC_minima.dat</code>. Additionally, its filename must follow the format <code>YYYYMMDD_StarName_Telescope_Filter_LC</code>. For example, <code>20240101_DD-CrB_T100_u_LC.dat</code>. If a minima file is provided for the same dataset, its name should be identical but end with <code>_minima</code>, e.g. <code>20240101_DD-CrB_T100_u_LC_minima.dat</code>.</li>
+
 </ul>
 
 <h2>License</h2>
