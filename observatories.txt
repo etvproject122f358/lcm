@@ -1,0 +1,7 @@
+AUKR	39.843333	32.78	1266.0	Europe/Istanbul
+TUG	36.825	30.335	2515.0	Europe/Istanbul
+DAG	39.78069	41.22653	3170.0	Europe/Istanbul
+Istanbul Univ. Obs.	41.011667	28.965	65.0	Europe/Istanbul
+Charles Univ. Ast. Inst. Prague	50.076667	14.395	267.0	Europe/Prague
+MROSA	-29.03909	26.40395	1412.0	Africa/Johannesburg
+El Sauce	-30.4725	-70.7361	1525.0	America/Santiago
