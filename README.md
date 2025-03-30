@@ -47,7 +47,7 @@ The software currently visualizes minimum times based on EEST (Eastern European 
     <pre>Minimum Time [BJD]    Min Type (1 or 2)    Uncertainty [days]</pre>
   </li>
   <li><strong>Ephemeris File:</strong> A list of target names with associated reference minima times and orbital periods. This information can be entered manually or imported from a file.</li>
-  <li><strong>Observatory Location:</strong> Can be selected from predefined observatory templates or entered manually (latitude, longitude, altitude, UTC offset).</li>
+  <li><strong>Observatory Location:</strong> Can be selected from predefined observatory templates or entered manually.</li>
 </ul>
 
 
