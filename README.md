@@ -56,8 +56,7 @@ The software currently visualizes minimum times based on EEST (Eastern European 
 
 </body>
 
-<h2>Author & Contact</h2>
-<p>Written by <strong>Furkan Akar</strong></p>
+<p>Coded by <strong>Furkan Akar</strong></p>
 <p>If you have any questions, suggestions, or feedback, feel free to contact me at:  
   <a href="mailto:efurkanakar@gmail.com">efurkanakar@gmail.com</a>
 </p>
